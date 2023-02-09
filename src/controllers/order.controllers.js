@@ -28,19 +28,21 @@ exports.addOrderHandler = async function addOrderHandler(req, res, next) {
       .send(buildAPIResponse(APIResponse.INTERNAL_EXCEPTION)));
   }
 };
-exports.search = async function search(req, res, next) {
-  try {
-    // const city = req.body.city || {};
-    // const word = req.body.word || {};
-    const typeOrder = req.body.typeOrder || {};
-    const results = await getOrderList(typeOrder);
-    return res.status(HTTPCode.OK).send(buildAPIResponse(APIResponse.SUCCESS, 'Orders list', results));
-  } catch (ex) {
-    logger.error(ex);
-    return next(res.status(HTTPCode.INTERNAL_SERVER_ERROR)
-      .send(buildAPIResponse(APIResponse.INTERNAL_EXCEPTION)));
-  }
-};
+
+// exports.search = async function search(req, res, next) {
+//   try {
+//     // const city = req.body.city || {};
+//     // const word = req.body.word || {};
+//     const typeOrder = req.body.typeOrder || {};
+//     const results = await getOrderList(typeOrder);
+//     return res.status(HTTPCode.OK).
+// send(buildAPIResponse(APIResponse.SUCCESS, 'Orders list', results));
+//   } catch (ex) {
+//     logger.error(ex);
+//     return next(res.status(HTTPCode.INTERNAL_SERVER_ERROR)
+//       .send(buildAPIResponse(APIResponse.INTERNAL_EXCEPTION)));
+//   }
+// };
 
 exports.donationList = async function donationList(req, res, next) {
   try {
