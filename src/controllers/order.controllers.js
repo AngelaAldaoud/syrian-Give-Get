@@ -48,8 +48,8 @@ exports.donationList = async function donationList(req, res, next) {
   try {
     // const city = req.body.city || {};
     // const word = req.body.word || {};
-    const typeOrder = 2;
-    const results = await getOrderList(typeOrder);
+    // const typeOrder = 2;
+    const results = await getOrderList(2);
     return res.status(HTTPCode.OK).send(buildAPIResponse(APIResponse.SUCCESS, 'Donation list', results));
   } catch (ex) {
     logger.error(ex);
