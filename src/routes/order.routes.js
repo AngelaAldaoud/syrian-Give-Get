@@ -118,6 +118,6 @@ router.get('/assistant/List/', orderController.assistantList);
  *                 type: object
  *
  */
-router.get('/delete/', orderController.deleteAll);
+router.delete('/delete/', orderController.deleteAll);
 
 module.exports = router;
