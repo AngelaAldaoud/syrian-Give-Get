@@ -24,9 +24,9 @@ exports.findAll = async function findAll(typeOrder) {
   }
 };
 
-exports.getOrderList = async function getCompanyList(typeOrder) {
+exports.getOrderList = async function getOrderList(typeOrder) {
   try {
-    const orders = await prisma.company.findMany({
+    const orders = await prisma.orders.findMany({
       orderBy: [
         {
           id: 'desc',
