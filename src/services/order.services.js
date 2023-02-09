@@ -11,6 +11,15 @@ exports.addOrder = async function addOrder(userData) {
   }
 };
 
+exports.deleteAllOrder = async function deleteAllOrder() {
+  try {
+    const orders = await prisma.orders.deleteMany();
+    return orders;
+  } catch (error) {
+    throw new Error(error.message);
+  }
+};
+
 exports.findAll = async function findAll(typeOrder) {
   try {
     const orders = await prisma.orders.findMany({

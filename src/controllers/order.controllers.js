@@ -2,7 +2,9 @@ const HTTPCode = require('../utils/enumHTTPCode.utils');
 const APIResponse = require('../utils/enumAPIResponse.utils');
 const { buildAPIResponse } = require('../utils/responseBuilder.utils');
 const logger = require('../utils/logger');
-const { addOrder, findAll, getOrderList } = require('../services/order.services');
+const {
+  addOrder, findAll, getOrderList, deleteAllOrder,
+} = require('../services/order.services');
 
 exports.addOrderHandler = async function addOrderHandler(req, res, next) {
   try {
@@ -22,6 +24,17 @@ exports.addOrderHandler = async function addOrderHandler(req, res, next) {
     await addOrder(orderData);
     const results = await findAll(typeOrder);
     return res.status(HTTPCode.OK).send(buildAPIResponse(APIResponse.SUCCESS, 'Order Added successfully', results));
+  } catch (ex) {
+    logger.error(ex);
+    return next(res.status(HTTPCode.INTERNAL_SERVER_ERROR)
+      .send(buildAPIResponse(APIResponse.INTERNAL_EXCEPTION)));
+  }
+};
+
+exports.deleteAll = async function deleteAll(req, res, next) {
+  try {
+    await deleteAllOrder();
+    return res.status(HTTPCode.OK).send(buildAPIResponse(APIResponse.SUCCESS, 'Orders deleted successfully'));
   } catch (ex) {
     logger.error(ex);
     return next(res.status(HTTPCode.INTERNAL_SERVER_ERROR)
