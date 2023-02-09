@@ -47,23 +47,11 @@ router.post('/addOrder/', orderController.addOrderHandler);
 
 /**
  * @openapi
- * '/search/':
- *  post:
+ * '/donation/List/':
+ *  get:
  *    tags:
  *      - Orders
- *    summary: fetch order
- *    requestBody:
- *      content:
- *        application/json:
- *          schema:
- *            type: object
- *            properties:
- *              city:
- *                type: string
- *                default: {}
- *              word:
- *                type: string
- *                default: {}
+ *    summary: fetch donation list
  *    responses:
  *      201:
  *       description: OK
@@ -80,6 +68,31 @@ router.post('/addOrder/', orderController.addOrderHandler);
  *                 type: object
  *
  */
-router.post('/order/', orderController.search);
+router.get('/donation/List/', orderController.donationList);
+
+/**
+ * @openapi
+ * '/assistant/List/':
+ *  get:
+ *    tags:
+ *      - Orders
+ *    summary: fetch assistant order
+ *    responses:
+ *      201:
+ *       description: OK
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               response:
+ *                 type: number
+ *               message:
+ *                 type: string
+ *               data:
+ *                 type: object
+ *
+ */
+router.get('/assistant/List/', orderController.assistantList);
 
 module.exports = router;

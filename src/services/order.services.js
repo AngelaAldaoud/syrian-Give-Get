@@ -24,7 +24,7 @@ exports.findAll = async function findAll(typeOrder) {
   }
 };
 
-exports.getOrderList = async function getCompanyList(city, word) {
+exports.getOrderList = async function getCompanyList(typeOrder) {
   try {
     const orders = await prisma.company.findMany({
       orderBy: [
@@ -41,8 +41,7 @@ exports.getOrderList = async function getCompanyList(city, word) {
         details: true,
       },
       where: {
-        city,
-        word,
+        typeOrder,
       },
     });
     return orders;

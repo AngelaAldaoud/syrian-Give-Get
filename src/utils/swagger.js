@@ -5,7 +5,7 @@ const options = {
   definition: {
     openapi: '3.0.3',
     info: {
-      title: 'Stitvest',
+      title: 'Syrian-Give&Get',
       description: 'This document demonstrates the server APIs and how to send/receive data from them.',
       version: '1.0.0',
       contact: {
